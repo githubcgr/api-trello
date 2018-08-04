@@ -4,7 +4,11 @@
         <title></title>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-        <script src="https://trello.com/1/client.js?key=2b2558bca372c8ecd40edd861d5ce7bf&token=5f43614610f8029a37c8a3233d47e93fd9f97fea3be33b5d2208ef714e399b09"></script>
+        <?php
+        $key = '2b2558bca372c8ecd40edd861d5ce7bf';
+        $token = '5f43614610f8029a37c8a3233d47e93fd9f97fea3be33b5d2208ef714e399b09';
+        ?>
+        <script src="https://trello.com/1/client.js?key=<?= $key ?>&token=<?= $token ?>"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
