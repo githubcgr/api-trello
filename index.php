@@ -3,20 +3,24 @@
         <meta charset="UTF-8">
         <title></title>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-        <?php
-        $key = '2b2558bca372c8ecd40edd861d5ce7bf';
-        $token = '5f43614610f8029a37c8a3233d47e93fd9f97fea3be33b5d2208ef714e399b09';
-        ?>
-        <script src="https://trello.com/1/client.js?key=<?= $key ?>&token=<?= $token ?>"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <script src="https://trello.com/1/client.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="fontawesome-free-5.2.0-web/css/all.min.css">
     </head>
     <body>
         <h1 class="text-center">API TRELLO</h1>
-
         <div class="col-12" id="quadros"></div>
+
+        <script>
+            $(function () {
+                getQuadrosUsuario();
+            })
+        </script>
+
 
         <div class="modal" tabindex="-1" role="dialog" id="modalBoard">
             <div class="modal-dialog modal-lg">
@@ -36,14 +40,17 @@
                 </div>
             </div>
         </div>
+        <div class="modal" tabindex="-1" role="dialog" id="modalLoading">
+            <div class="modal-dialog modal-sm" style="display: table">
+                <div class="modal-content">
+                    <div class="modal-body text-center" style="background: #c33c3c;color:#fff">
+                        <i class="fas fa-spin fa-spinner fa-4x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <script>
-            $(function () {
-                getQuadrosUsuario();
-            })
-        </script>
-
-        <script src="trello-functions.js"></script>
+        <script src="js/trello-functions.js"></script>
 
     </body>
 </html>
