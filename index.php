@@ -5,6 +5,7 @@
 
         <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
 
+        <script src="js/api-params.js"></script>
         <script src="https://trello.com/1/client.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
@@ -13,8 +14,13 @@
     </head>
     <body>
         <h1 class="text-center">API TRELLO</h1>
-        <div class="col-12" id="quadros"></div>
 
+        <div class="col">
+
+            <hr>
+
+            <div class="col-12" id="quadros"></div>
+        </div>
         <script>
             $(function () {
                 getQuadrosUsuario();
