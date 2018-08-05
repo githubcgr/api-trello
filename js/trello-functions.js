@@ -1,5 +1,9 @@
-console.log(idUser)
-
+function openLazyLoader() {
+    $("#modalLoading").modal();
+}
+function closeLazyLoader() {
+    $("#modalLoading").modal("hide");
+}
 
 function getQuadrosUsuario() {
     openLazyLoader();
@@ -46,6 +50,7 @@ function showBoardsList(nameBoard, idBoard) {
             });
 
             htmlCorpo += "</ul>";
+            htmlCorpo += "<button class='btn btn-success btn-sm' onclick='openModalAddCard(\"" + listItem.id + "\",\"" + listItem.name + "\")'><i class='fas fa-plus-circle'></i> Novo</button>";
             htmlCorpo += "</div>";
             htmlCorpo += "</div>";
         });
@@ -79,10 +84,31 @@ function getCardsBoard(idList) {
     return json;
 }
 
-
-function openLazyLoader() {
-    $("#modalLoading").modal();
+function openModalAddCard(idList, listName) {
+    openLazyLoader();
+    $("#modalAddCard").find('.modal-title').html(listName);
+    $("#modalAddCard").find('#idList').val(idList);
+    $("#modalAddCard").modal();
+    closeLazyLoader();
 }
-function closeLazyLoader() {
-    $("#modalLoading").modal("hide");
+
+function salvarCartao() {
+    inputs = $("#formAddCard").serialize();
+    url = "https://api.trello.com/1/cards?" + inputs + "&key=" + userKey + "&token=" + userToken;
+    var data = $.ajax({
+        url: url,
+        async: false,
+        dataType: "json",
+        method: "POST",
+        success: function (data) {
+            alert('Enviado');
+            boardName = $("#modalBoard").find(".modal-title").html();
+            $("#modalAddCard").modal('hide');
+
+            showBoardsList(boardName, data.idBoard);
+        },
+        error: function (data) {
+            alert('erro');
+        }
+    });
 }
